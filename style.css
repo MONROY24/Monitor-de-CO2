@@ -1,0 +1,263 @@
+/*
+ * style.css
+ * Estilos personalizados con la paleta Rojo, Negro y Grises (Modo Oscuro).
+ */
+
+/* Definición de variables CSS para la nueva paleta */
+:root {
+    /* Paleta:
+      Rojo Brillante: #b91817
+      Rojo Oscuro: #981914
+      Gris Oscuro: #333333
+      Gris Claro: #e8e8e7
+      Casi Blanco: #f6f5f5
+    */
+
+    --color-primary-custom: #b91817;   /* Rojo Brillante (Botones) */
+    --color-header-custom: #981914;    /* Rojo Oscuro (Cabeceras tabla/gráfico) */
+    --color-body-bg: #333333;          /* Gris Oscuro (Fondo de página) */
+    --color-content-bg: #e8e8e7;       /* Gris Claro (Fondo de contenido) */
+    --color-nav-footer-bg: #222222;    /* Un poco más oscuro que el body */
+    --color-text-light: #f6f5f5;       /* Casi Blanco (Texto sobre fondos oscuros) */
+    --color-text-dark: #333333;        /* Gris Oscuro (Texto sobre fondos claros) */
+    --color-text-muted: #e8e8e7;       /* Gris Claro (Texto apagado) */
+
+    /* Colores para los gráficos */
+    --chart-co2-border: rgba(185, 24, 23, 1);     /* Rojo Brillante */
+    --chart-co2-background: rgba(185, 24, 23, 0.2);
+    --chart-temp-border: rgba(116, 245, 225, 1);    /* Casi Blanco */
+    --chart-temp-background: rgba(116, 245, 225, 0.2);
+    --chart-hum-border: rgba(152, 25, 20, 1);     /* Rojo Oscuro */
+    --chart-hum-background: rgba(152, 25, 20, 0.2);
+}
+
+body {
+    background-color: var(--color-body-bg); /* Fondo de página Gris Oscuro */
+    color: var(--color-text-light);       /* Texto Casi Blanco por defecto */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex-grow: 1;
+}
+
+/* Títulos sobre fondo oscuro */
+main h2, 
+main .display-4 {
+    color: var(--color-text-light) !important;
+}
+main .lead {
+    color: var(--color-text-muted) !important; /* Texto gris claro */
+}
+/* Corregido: texto 'text-muted' en 'main' */
+main p.text-muted {
+     color: var(--color-text-muted) !important;
+}
+
+
+/* --- Barra de Navegación --- */
+.bg-dark-custom {
+    background-color: var(--color-nav-footer-bg) !important;
+    border-bottom: 1px solid #111;
+}
+
+.navbar .navbar-brand, 
+.navbar .nav-link {
+    color: var(--color-text-light) !important;
+    opacity: 0.8;
+}
+
+.navbar .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.navbar .nav-link.active,
+.navbar .nav-link:hover {
+    color: white !important;
+    opacity: 1;
+}
+.navbar .nav-link.active {
+    font-weight: bold;
+}
+
+/* --- Botones y Acentos (Rojo) --- */
+.bg-primary-custom {
+    background-color: var(--color-header-custom) !important; /* Rojo Oscuro */
+    color: white !important;
+}
+
+.btn-primary-custom {
+    background-color: var(--color-primary-custom); /* Rojo Brillante */
+    border-color: var(--color-primary-custom);
+    color: white;
+}
+
+.btn-primary-custom:hover {
+    background-color: #981914; /* Rojo Oscuro al pasar */
+    border-color: #981914;
+    color: white;
+}
+
+/* --- Contenido (Jumbotron, Tarjetas, Alertas) --- */
+.bg-light-custom {
+    background-color: var(--color-content-bg) !important; /* Fondo gris claro */
+    color: var(--color-text-dark) !important;         /* Texto oscuro */
+    border: none;
+}
+
+.bg-light-custom h1, 
+.bg-light-custom p {
+    color: var(--color-text-dark) !important;
+}
+
+/* --- Tarjetas (Gráficos) --- */
+.card {
+    background-color: var(--color-content-bg);
+    border: none;
+    color: var(--color-text-dark);
+}
+.card-body {
+    background-color: var(--color-content-bg);
+    color: var(--color-text-dark);
+}
+.card-header {
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+/* --- Tabla --- */
+#data-table {
+    background-color: var(--color-content-bg);
+    color: var(--color-text-dark);
+    border: none;
+}
+.table-hover tbody tr:hover {
+   background-color: #d1d1d1;
+   color: var(--color-text-dark);
+}
+#data-table thead {
+    color: white;
+}
+
+/* --- Footer --- */
+.bg-footer-custom {
+    background-color: var(--color-nav-footer-bg) !important;
+    color: var(--color-text-muted) !important; /* Texto gris claro/apagado */
+    border-top: 1px solid #111;
+}
+
+.footer h5 {
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase; /* Mayúsculas como en la imagen */
+    margin-bottom: 1.2rem;
+}
+
+/* ===== NUEVAS REGLAS PARA FOOTER DETALLADO ===== */
+.footer-logo {
+    max-width: 120px;
+    padding: 10px;
+}
+
+.footer-info-links,
+.footer-links {
+    list-style: none;
+    padding-left: 0;
+}
+
+.footer-info-links li {
+    display: flex;
+    align-items: flex-start; /* Alinear al inicio por si el texto ocupa 2 líneas */
+    margin-bottom: 0.5rem;
+}
+
+/* Alineación de íconos en listas de info/contacto */
+.footer-info-links i.fas,
+.footer-info-links i.fab {
+    width: 25px; /* Ancho fijo para alinear el texto */
+    text-align: center;
+    margin-right: 8px; /* Separación del ícono */
+    margin-top: 4px; /* Pequeño ajuste vertical */
+    color: var(--color-text-light); /* Íconos un poco más brillantes */
+}
+
+/* Estilo de enlaces de la lista "ENLACES" */
+.footer-links a {
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--color-text-light);
+    text-decoration: underline;
+}
+
+/* Íconos de redes sociales */
+.social-icons .social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo sutil */
+    color: var(--color-text-light);
+    text-decoration: none;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.social-icons .social-icon:hover {
+    background-color: var(--color-primary-custom); /* Color rojo al pasar */
+    color: white;
+}
+
+.footer-bottom-bar {
+    padding-top: 1rem;
+    color: var(--color-text-muted);
+    opacity: 0.7;
+}
+
+/* ===== REGLAS PARA FOOTER RESPONSIVE (MÓVIL) ===== */
+@media (max-width: 767px) {
+    
+    /* 1. Centra el contenido principal de todas las columnas del footer */
+    .footer .row > div[class*="col-"] {
+        text-align: center;
+    }
+
+    /* 2. Centra los bloques de lista/párrafo (columnas 2, 3 y 4),
+         pero alinea su texto interno a la izquierda para legibilidad.
+    */
+    .footer-links, /* Col 2 (Enlaces) */
+    .footer .row > div:nth-child(3) .footer-info-links, /* Col 3 (Contacto) */
+    .footer .row > div[class*="col-"] p.small /* Col 4 (Créditos) */ {
+        display: inline-block; /* Permite que el bloque se centre */
+        text-align: left;  /* Mantiene el texto interno legible */
+    }
+
+    /* 3. Para la lista de la Col 1 (Info UES), la centramos como bloque.
+         Heredará 'text-align: center' de su padre.
+    */
+    .footer .row > div:first-child .footer-info-links {
+        display: inline-block;
+    }
+
+    /* 4. MODIFICACIÓN: Para los 'li' (flex) de la Col 1,
+       les decimos que justifiquen su contenido al centro.
+       Esto centrará el ícono y el texto juntos.
+    */
+    .footer .row > div:first-child .footer-info-links li {
+        justify-content: center;
+    }
+    
+    /* 5. Ajusta el ancho máximo del párrafo de créditos */
+    .footer .row > div[class*="col-"] p.small {
+        max-width: 350px; 
+    }
+}
+/* ============================================== */
